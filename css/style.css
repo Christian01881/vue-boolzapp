@@ -1,0 +1,135 @@
+/* GENERAL */
+:root{
+    --bg-body-green:#009688;
+    --bg-body-grey:#d9dbd3;
+    --bg-notification:#8edafc;
+    --bg-my-message:#d5f9ba;
+    --bg-active-user:#e9ebeb;
+    --bg-header:#eaeaea;
+    --icon-color:#b1b1b1;
+    --white:#ffffff;
+    --link:#6685a9;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.d-flex{
+    display: flex;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.justify-content-start{
+    justify-content: flex-start;
+}
+
+.justify-content-center{
+    justify-content: center;
+}
+
+.m10-right{
+    margin-right: 10px;
+}
+
+.m10-left{
+    margin-left: 10px;
+}
+/* HEADER */
+#wrapper{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(#009688 17%, #d9dbd3 17% 100%);
+    display: flex;
+    align-items: center;
+}
+
+.container{
+    width: 1200px;
+    height: 95%;
+    background-color: black;
+    margin: 0 auto;
+}
+
+header{
+    height: 60px;
+    background-color: var(--bg-header);
+    flex-direction: row;
+}
+
+.header-left{
+    width: calc(100% / 3);
+    border-right: 1px solid var(--icon-color);
+}
+
+.header-right{
+    width: calc(100% - (100% / 3));
+}
+
+.profile{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile img{
+    width: 100%;
+}
+
+header i{
+    color: var(--icon-color);
+    padding: 0 5px;
+    font-size: 20px;
+}
+
+.i-fs{
+    font-size: 23px;
+}
+
+/* MAIN */
+main{
+    width: 100%;
+    height: calc(100% - 60px);
+    background-color: white;
+}
+
+.sidebar{
+    width: calc(100% / 3);
+    height: 100%;
+}
+
+.content{
+    width: calc(100% - (100% / 3));
+    height: 100%;
+}
+
+.notification{
+    background-color: var(--bg-notification);
+    width: 100%;
+    height: 70px;
+    color: black;
+}
+
+.bell{
+    width: 50px;
+    height: 50px;
+    background-color: var(--white);
+    border-radius: 50%;
+    color: var(--bg-notification);
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.notification a{
+    color: var(--link);
+}
