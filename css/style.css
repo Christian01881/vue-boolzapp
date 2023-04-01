@@ -9,12 +9,21 @@
     --icon-color:#b1b1b1;
     --white:#ffffff;
     --link:#6685a9;
+    --text-bar-icons:#6b7376;
 }
 
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+#app{
+    width: 100%;
+    height: 100vh;
+    background-image: linear-gradient(#009688 17%, #d9dbd3 17% 100%);
+    display: flex;
+    align-items: center;
 }
 
 .d-flex{
@@ -37,6 +46,10 @@
     justify-content: center;
 }
 
+.justify-content-around{
+    justify-content: space-around;
+}
+
 .m10-right{
     margin-right: 10px;
 }
@@ -44,14 +57,8 @@
 .m10-left{
     margin-left: 10px;
 }
+
 /* HEADER */
-#wrapper{
-    width: 100%;
-    height: 100vh;
-    background-image: linear-gradient(#009688 17%, #d9dbd3 17% 100%);
-    display: flex;
-    align-items: center;
-}
 
 .container{
     width: 1200px;
@@ -80,6 +87,7 @@ header{
     height: 50px;
     border-radius: 50%;
     overflow: hidden;
+    margin-left: 10px;
 }
 
 .profile img{
@@ -103,6 +111,7 @@ main{
     background-color: white;
 }
 
+/* SIDEBAR */
 .sidebar{
     width: calc(100% / 3);
     height: 100%;
@@ -133,3 +142,88 @@ main{
 .notification a{
     color: var(--link);
 }
+
+.search{
+    width: 100%;
+    height: 40px;
+    background-color: #fafafa;
+}
+
+.search-left{
+    width: 15%;
+    height: 85%;
+}   
+
+.search-right{
+    width: 85%;
+    height: 85%;
+}
+
+.search-icon{
+    width: 98%;
+    height: 100%;
+    color: var(--icon-color);
+    border: 0.8px solid var(--bg-header);
+    background-color: var(--white);
+    border-radius: 1px;
+    text-align: center;
+    line-height: 32px;
+    margin-left: 4px;
+}
+
+.card{
+    width: 100%;
+    height: 70px;
+    background-color: blueviolet;
+}
+
+.search-bar{
+    width: 98%;
+    height: 100%;
+    border: 0.8px solid var(--bg-header);
+    border-radius: 1px;
+    color: var(--icon-color);
+}
+
+.contacts{
+    width: 100%;
+    height: calc(100% - 110px);
+    overflow-y: scroll;
+}
+
+
+/* CONTENT */
+.screen{
+    width: 100%;
+    height: calc(100% - 60px);
+    background-image: url(../img/BlackBoolzapp.jpg);
+    background-size: contain;
+    overflow-y: scroll;
+}
+
+.text-bar{
+    width: 100%;
+    height: 60px;
+    background-color: var(--bg-header);
+}
+
+.text-bar-icons{
+    width: 10%;
+    color: var(--text-bar-icons);
+}
+
+.text-bar-input{
+    width: 80%;
+    height: 80%;
+}
+
+.message-input{
+    width: 100%;
+    height: 100%;
+    border: 0.8px solid var(--bg-header);
+    border-radius: 5px;
+    color: var(--icon-color);
+    padding: 0 10px;
+}
+
+
