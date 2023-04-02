@@ -50,12 +50,23 @@
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         </div>
                         <div class="search-right d-flex align-items-center">
-                            <input type="text" class="search-bar" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat">
                         </div>
                     </div>
                     <div class="contacts">
-                        <div class="card">
-                            
+                        <div v-for="(card, id) in contacts" :key="id" class="card d-flex align-items-center" @click="currentChat">
+                            <div>
+                                <div class="profile">
+                                <img :src="card.avatar" :alt="card.name">
+                                </div>
+                            </div>
+                            <div class="m10-left d-flex justify-content-start column m15-bottom flex-grow">
+                                <p class="contact-name">{{card.name}}</p>
+                                <p class="last-message">{{card.messages[card.messages.length - 1].message}}</p>
+                            </div>
+                            <div class="time d-flex justify-content-end align-items-start">
+                                <p class="time-message m10-top m10-right">{{card.messages[card.messages.length - 1].date.slice(11, 16)}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -63,7 +74,14 @@
             <!-- inizio content -->
                 <div class="content">
                     <div class="screen">
-
+                        <div class="talk d-flex column">
+                            <div class="align-items-start" :class="waMessage.status" v-for="waMessage in contacts[currentIndex].messages">
+                                <div class="column d-flex m10-top message-format">
+                                    <p class="m10-top">{{waMessage.message}}</p>   
+                                    <p class="time-message align-self-end m10-right">{{waMessage.date.slice(11, 16)}}</p>
+                                </div>   
+                            </div>
+                        </div>
                     </div>
                     <div class="text-bar d-flex align-items-center">
                         <div class="d-flex justify-content-center align-items-center text-bar-icons">
