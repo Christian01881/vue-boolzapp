@@ -10,6 +10,7 @@
     --white:#ffffff;
     --link:#6685a9;
     --text-bar-icons:#6b7376;
+    --black:#000000;
 }
 
 *{
@@ -74,8 +75,16 @@
     align-items: flex-end;
 }
 
+.m5-right{
+    margin-right: 5px;
+}
+
 .m10-right{
     margin-right: 10px;
+}
+
+.m20-right{
+    margin-right: 20px;
 }
 
 .m10-left{
@@ -94,7 +103,9 @@
     padding-left: 10px;
 }
 
-.g-
+.g-10{
+    gap: 10px;
+}
 
 .position-relative{
     position: relative;
@@ -104,7 +115,7 @@
 .container{
     width: 1200px;
     height: 95%;
-    background-color: black;
+    background-color: var(--black);
     margin: 0 auto;
 }
 
@@ -224,7 +235,7 @@ main{
     height: 100%;
     border: 0.8px solid var(--bg-header);
     border-radius: 1px;
-    color: var(--icon-color);
+    color: var(--black);
 }
 
 .contacts{
@@ -284,7 +295,7 @@ main{
     height: 100%;
     border: 0.8px solid var(--bg-header);
     border-radius: 5px;
-    color: var(--icon-color);
+    color: black;
     padding: 0 10px;
 }
 
@@ -324,3 +335,11 @@ main{
     color: var(--icon-color);
 }
 
+
+.bg-contact{
+    background-color:var(--bg-active-user);
+}
+
+.card:hover{
+    background-color: var(--bg-active-user);
+}

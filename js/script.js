@@ -113,7 +113,7 @@ const { createApp } = Vue
             {
                 id:6,
                 name: 'Claudia',
-                avatar: './img/avatar_5.jpg',
+                avatar: './img/avatar_6.jpg',
                 visible: true,
                 messages: [
                     {
@@ -176,14 +176,47 @@ const { createApp } = Vue
             }
         ],
         currentIndex: 0,
+        newMessage: '',
+        filteredChat: '',
+        searchChat: '',
       }
     },
     methods:{
-        currentChat(id){
-           this.currentIndex = ;
+        currentChat(index){
+            this.currentIndex = index;
+        },
+        sendMessage(){
+            const add = {
+                date: '10/01/2020 15:50:00',
+                message: this.newMessage,
+                status: 'sent'
+            }
+            this.contacts[this.currentIndex].messages.push(add);
+            this.newMessage = '';
+            setTimeout(()=> {
+                this.receiveMessage()
+            },2000)
+        },
+        receiveMessage(){
+            const received = {
+                date: '10/01/2020 15:50:00',
+                message: 'OK!',
+                status: 'received'
+            }
+            this.contacts[this.currentIndex].messages.push(received);
+            
+        },
+        filterContacts(){
+            if(this.searchChat === ''){
+                this.filteredChat = this.contacts;
+            } 
+            else{
+                this.filteredChat = this.contacts.filter((card)=> { if(card.name.toLowerCase().includes(this.searchChat.trim().toLowerCase())) return true});
+                searchChat = '';
+            }
         },
     },
     mounted(){
-
+    
     },
   }).mount('#app')

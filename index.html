@@ -16,7 +16,7 @@
                 <div class="header-left d-flex align-items-center justify-content-between">
                     <div class="d-flex align-items-center">
                         <div class="profile">
-                        <img src="./img/avatar_io.jpg" alt="myphoto">
+                            <img src="./img/avatar_io.jpg" alt="myphoto">
                         </div>
                         <span class="m10-left">Christian</span>
                     </div>
@@ -26,8 +26,21 @@
                         <i class="fa-solid fa-ellipsis-vertical m10-right i-fs"></i>
                     </div>                  
                 </div>
-                <div class="header-right">
-
+                <div class="header-right d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="profile">
+                            <img :src="contacts[currentIndex].avatar" :alt="contacts[currentIndex].name">
+                        </div>
+                        <div>
+                        <p class="contact-name">{{contacts[currentIndex].name}}</p>
+                        <p class="last-message">Ultimo accesso alle {{contacts[currentIndex].messages[contacts[currentIndex].messages.length - 1].date.slice(11, 16)}}</p>
+                        </div>   
+                    </div>
+                    <div class="d-flex g-10">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <i class="fa-solid fa-paperclip m5-right"></i>
+                        <i class="fa-solid fa-ellipsis-vertical m20-right i-fs"></i>
+                    </div>
                 </div>
             </header>
             <!-- fine header pagina -->
@@ -50,11 +63,11 @@
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         </div>
                         <div class="search-right d-flex align-items-center">
-                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat">
+                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat" @input="filterContacts()" v-model="searchChat" :keyup.delete="filterContacts()">
                         </div>
                     </div>
                     <div class="contacts">
-                        <div v-for="(card, id) in contacts" :key="id" class="card d-flex align-items-center" @click="currentChat">
+                        <div v-for="(card, index) in filteredChat" :key="index" class="card d-flex align-items-center" @click="currentChat(index)" :class="{'bg-contact': index === currentIndex}">
                             <div>
                                 <div class="profile">
                                 <img :src="card.avatar" :alt="card.name">
@@ -88,7 +101,7 @@
                             <i class="fa-regular fa-face-smile i-fs"></i>
                         </div>
                         <div class="d-flex justify-content-center align-items-center text-bar-input">
-                            <input type="text" class="message-input" placeholder="scrivi un messaggio">
+                            <input type="text" class="message-input" placeholder="scrivi un messaggio" v-model="newMessage" @keyup.enter="sendMessage">
                         </div>
                         <div class="d-flex justify-content-center align-items-center text-bar-icons">
                             <i class="fa-solid fa-microphone i-fs"></i>
