@@ -91,11 +91,11 @@
                         <div class="talk d-flex column">
                             <div class="d-flex" :class="waMessage.status" v-for="(waMessage, index) in contacts[currentIndex].messages" :key="index" ref="cards">
                                 <div id="box" class="column d-flex m10-top message-format">
-                                    <div class="dropdown d-flex column border" :class="{'dShow' : dropShow()}">
+                                    <div class="dropdown d-flex column border" :class="{'dShow' : dropShow(index)}">
                                         <p class="border-bottom p10-bottom text-center m10-top">Info messaggio</p>
                                         <p class="text-center m10-top" @click="deleteMsg(index)">Cancella</p>
                                     </div>
-                                    <p class="m10-top d-flex justify-content-between">{{waMessage.message}} <i class="fa-solid fa-chevron-down m10-right d-none icon-down" @click="dropDown()"></i></p>   
+                                    <p class="m10-top d-flex justify-content-between">{{waMessage.message}} <i class="fa-solid fa-chevron-down m10-right d-none icon-down" @click="dropDown(index)"></i></p>   
                                     <p class="time-message align-self-end m10-right">{{waMessage.date.slice(11, 16)}}</p>
                                 </div>   
                             </div>

@@ -386,5 +386,5 @@ main{
 }
 
 .dShow{
-    display: inline-block;
+    display: block;
 }

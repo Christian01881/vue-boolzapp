@@ -178,6 +178,7 @@ const { createApp } = Vue;
             }
         ],
         currentIndex: 0,
+        currentI: null,
         newMessage: '',
         filteredChat: '',
         searchChat: '',
@@ -190,11 +191,13 @@ const { createApp } = Vue;
             this.currentIndex = index;
         },
         sendMessage(){
+            if(this.newMessage.length > 0){
             const add = {
                 date: dt.local().toFormat('dd/MM/yyyy HH:mm:ss'),
                 message: this.newMessage,
                 status: 'sent'
             }
+        
             this.contacts[this.currentIndex].messages.push(add);
             this.newMessage = '';
             setTimeout(()=> {
@@ -202,7 +205,8 @@ const { createApp } = Vue;
                 this.$nextTick(()=> {
                     this.$refs.cards[this.$refs.cards.length -1].scrollIntoView()
                 });
-            },1000)
+            },2000)
+        }
         },
         receiveMessage(){
             const received = {
@@ -222,22 +226,25 @@ const { createApp } = Vue;
                 searchChat = '';
             }
         },
-        dropDown(){
-            if(this.show === false){
+        dropDown(i){
+            this.currentI = i;
+            if(i === this.currentI && this.show === false){
                 this.show = true
             } else{
                 this.show = false
             }
+            console.log(i);
         },
-        dropShow(){
-            return this.show;
+        dropShow(i){
+            if(i === this.currentI && this.show === false)
+            return true;
         },
         deleteMsg(i){
             this.contacts[this.currentIndex].messages.splice(i, 1)
         }
     },
     mounted(){
-        
+
     },
   }).mount('#app')
 
