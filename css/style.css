@@ -27,6 +27,10 @@
     align-items: center;
 }
 
+.d-none{
+    display: none;
+}
+
 .d-flex{
     display: flex;
 }
@@ -46,6 +50,7 @@
 .align-items-start{
     align-items: flex-start;
 }
+
 
 .justify-content-between{
     justify-content: space-between;
@@ -103,8 +108,16 @@
     padding-left: 10px;
 }
 
+.p10-bottom{
+    padding-bottom: 10px;
+}
+
 .g-10{
     gap: 10px;
+}
+
+.text-center{
+    text-align: center;
 }
 
 .position-relative{
@@ -305,29 +318,28 @@ main{
     margin: 11px auto;
 }
 
-.message-received-format{
-    width: 300px;
-    min-height: 40px;
-    background-color: var(--white);
-    border-radius: 10px;
-    padding-left: 20px;
-}
-
 .message-format{
     width: 300px;
     min-height: 40px;
-    background-color: var(--bg-my-message);
     border-radius: 10px;
     padding-left: 20px;
+    position: relative;
 }
 
-.received .message-format{
+.received{
     align-items: flex-start;
-    background-color: var(--white);
 }
 
 .sent{
     align-self: flex-end;
+}
+
+.sent #box{
+    background-color: var(--bg-my-message);
+}
+
+.received #box{
+    background-color: var(--white);
 }
 
 .time-message{
@@ -342,4 +354,37 @@ main{
 
 .card:hover{
     background-color: var(--bg-active-user);
+}
+
+.message-format:hover .icon-down{
+    display: inline;
+    color: var(--icon-color);
+}
+
+.dropdown{
+    width: 130px;
+    height: 80px;
+    background-color: var(--white);
+    position: absolute;
+    right: 0;
+    top: 30px;
+    border-radius: 10px;
+    z-index: 50;
+    display: none;
+}
+
+.dropdown:hover{
+    cursor: pointer;
+}
+
+.border{
+    border: 1px solid var(--icon-color);
+}
+
+.border-bottom{
+    border-bottom: 1px solid var(--icon-color);
+}
+
+.dShow{
+    display: inline-block;
 }

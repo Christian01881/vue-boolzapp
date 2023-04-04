@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/3.3.0/luxon.min.js" integrity="sha512-KKbQg5o92MwtJKR9sfm/HkREzfyzNMiKPIQ7i7SZOxwEdiNCm4Svayn2DBq7MKEdrqPJUOSIpy1v6PpFlCQ0YA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="./css/style.css">
     <title>Boolzapp</title>
 </head>
@@ -63,7 +64,7 @@
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         </div>
                         <div class="search-right d-flex align-items-center">
-                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat" @input="filterContacts()" v-model="searchChat" :keyup.delete="filterContacts()">
+                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat" :keyup="filterContacts()">
                         </div>
                     </div>
                     <div class="contacts">
@@ -88,9 +89,13 @@
                 <div class="content">
                     <div class="screen">
                         <div class="talk d-flex column">
-                            <div class="align-items-start" :class="waMessage.status" v-for="waMessage in contacts[currentIndex].messages">
-                                <div class="column d-flex m10-top message-format">
-                                    <p class="m10-top">{{waMessage.message}}</p>   
+                            <div class="d-flex" :class="waMessage.status" v-for="(waMessage, index) in contacts[currentIndex].messages" :key="index" ref="cards">
+                                <div id="box" class="column d-flex m10-top message-format">
+                                    <div class="dropdown d-flex column border" :class="{'dShow' : dropShow()}">
+                                        <p class="border-bottom p10-bottom text-center m10-top">Info messaggio</p>
+                                        <p class="text-center m10-top" @click="deleteMsg(index)">Cancella</p>
+                                    </div>
+                                    <p class="m10-top d-flex justify-content-between">{{waMessage.message}} <i class="fa-solid fa-chevron-down m10-right d-none icon-down" @click="dropDown()"></i></p>   
                                     <p class="time-message align-self-end m10-right">{{waMessage.date.slice(11, 16)}}</p>
                                 </div>   
                             </div>
@@ -132,7 +137,7 @@
 
 
 
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3.2.47/dist/vue.global.js"></script>
     <script src="./js/script.js"></script>
 </body>
 </html>

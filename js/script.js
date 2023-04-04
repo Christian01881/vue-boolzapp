@@ -1,4 +1,6 @@
-const { createApp } = Vue
+const dt = luxon.DateTime;
+
+const { createApp } = Vue;
 
   createApp({
     data() {
@@ -179,6 +181,8 @@ const { createApp } = Vue
         newMessage: '',
         filteredChat: '',
         searchChat: '',
+        show: false,
+
       }
     },
     methods:{
@@ -187,19 +191,22 @@ const { createApp } = Vue
         },
         sendMessage(){
             const add = {
-                date: '10/01/2020 15:50:00',
+                date: dt.local().toFormat('dd/MM/yyyy HH:mm:ss'),
                 message: this.newMessage,
                 status: 'sent'
             }
             this.contacts[this.currentIndex].messages.push(add);
             this.newMessage = '';
             setTimeout(()=> {
-                this.receiveMessage()
-            },2000)
+                this.receiveMessage();
+                this.$nextTick(()=> {
+                    this.$refs.cards[this.$refs.cards.length -1].scrollIntoView()
+                });
+            },1000)
         },
         receiveMessage(){
             const received = {
-                date: '10/01/2020 15:50:00',
+                date: dt.local().toFormat('dd/MM/yyyy HH:mm:ss'),
                 message: 'OK!',
                 status: 'received'
             }
@@ -215,8 +222,22 @@ const { createApp } = Vue
                 searchChat = '';
             }
         },
+        dropDown(){
+            if(this.show === false){
+                this.show = true
+            } else{
+                this.show = false
+            }
+        },
+        dropShow(){
+            return this.show;
+        },
+        deleteMsg(i){
+            this.contacts[this.currentIndex].messages.splice(i, 1)
+        }
     },
     mounted(){
-    
+        
     },
   }).mount('#app')
+
