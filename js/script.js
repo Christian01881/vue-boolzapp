@@ -180,7 +180,6 @@ const { createApp } = Vue;
         currentIndex: 0,
         currentI: null,
         newMessage: '',
-        filteredChat: '',
         searchChat: '',
         show: false,
 
@@ -218,13 +217,13 @@ const { createApp } = Vue;
             
         },
         filterContacts(){
-            if(this.searchChat === ''){
-                this.filteredChat = this.contacts;
-            } 
-            else{
-                this.filteredChat = this.contacts.filter((card)=> { if(card.name.toLowerCase().includes(this.searchChat.trim().toLowerCase())) return true});
-                searchChat = '';
-            }
+            this.contacts.forEach((card) => {
+                if(card.name.toLowerCase().includes(this.searchChat.toLowerCase())){
+                    card.visible = true;
+                } else{
+                    card.visible = false;
+                }
+            })
         },
         dropDown(i){
             this.currentI = i;
@@ -233,7 +232,6 @@ const { createApp } = Vue;
             } else{
                 this.show = false
             }
-            console.log(i);
         },
         dropShow(i){
             if(i === this.currentI && this.show === false)
@@ -247,4 +245,3 @@ const { createApp } = Vue;
 
     },
   }).mount('#app')
-

@@ -49,7 +49,7 @@
             <!-- inizio main pagina -->
             <main class="d-flex">
             <!-- inizio sidebar -->
-                <div class="sidebar">
+                <div class="sidebar" :class="{'d-none': zIndex === false}">
                     <div class="notification d-flex align-items-center">
                         <div class="d-flex justify-content-center align-items-center bell">
                             <i class="fa-solid fa-bell-slash"></i>
@@ -64,11 +64,11 @@
                             <i class="fa-solid fa-magnifying-glass search-icon"></i>
                         </div>
                         <div class="search-right d-flex align-items-center">
-                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat" :keyup="filterContacts()">
+                            <input type="text" class="search-bar p10-left" placeholder="Cerca o inizia una nuova chat"  v-model="searchChat" @keyup="filterContacts()">
                         </div>
                     </div>
                     <div class="contacts">
-                        <div v-for="(card, index) in filteredChat" :key="index" class="card d-flex align-items-center" @click="currentChat(index)" :class="{'bg-contact': index === currentIndex}">
+                        <div v-for="(card, index) in contacts" :key="index" class="card d-flex align-items-center" @click="currentChat(index)" :class="{'bg-contact': index === currentIndex}">
                             <div>
                                 <div class="profile">
                                 <img :src="card.avatar" :alt="card.name">
